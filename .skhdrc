@@ -1,0 +1,89 @@
+# focus window
+hyper - h: yabai -m window --focus west
+hyper - j: yabai -m window --focus south
+hyper - k: yabai -m window --focus north
+hyper - l: yabai -m window --focus east
+
+# swap managed window
+hyper - left: yabai -m window --swap west
+hyper - right: yabai -m window --swap east
+
+# move managed window
+shift + hyper + ctrl - h: yabai -m window --warp west
+shift + hyper + ctrl - j: yabai -m window --warp south
+shift + hyper + ctrl - k: yabai -m window --warp north
+shift + hyper + ctrl - l: yabai -m window --warp east
+
+# rotate trees
+hyper - r: yabai -m space --rotate 90
+
+# toggle window fullscreen zoom
+hyper - f: yabai -m window --toggle zoom-fullscreen
+
+# hyper - s : yabai -m window --toggle
+hyper - s: yabai -m window --toggle sticky;\
+  yabai -m window --toggle topmost;\
+  yabai -m window --toggle pip
+
+# toggle padding and gap
+hyper - g: yabai -m space --toggle padding; yabai -m space --toggle gap
+
+# float / unfloat window and center on screen
+hyper - t: yabai -m window --toggle float;\
+  yabai -m window --grid 4:4:1:1:2:2
+
+# toggle window split type
+hyper - e: yabai -m window --toggle split
+
+# balance size of windows
+hyper - 0: yabai -m space --balance
+
+# move window and focus desktop
+hyper - 1: yabai -m window --space 1; yabai -m space --focus 1
+hyper - 2: yabai -m window --space 2; yabai -m space --focus 2
+hyper - 3: yabai -m window --space 3; yabai -m space --focus 3
+hyper - 4: yabai -m window --space 4; yabai -m space --focus 4
+hyper - 5: yabai -m window --space 5; yabai -m space --focus 5
+hyper - 6: yabai -m window --space 6; yabai -m space --focus 6
+hyper - 7: yabai -m window --space 7; yabai -m space --focus 7
+hyper - 8: yabai -m window --space 8; yabai -m space --focus 8
+hyper - 9: yabai -m window --space 9; yabai -m space --focus 9
+
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+# shift + hyper - n: yabai -m space --create && \
+#   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+#   yabai -m window --space "${index}" && \
+#   yabai -m space --focus "${index}"
+
+# fast focus desktop
+hyper - tab: yabai -m space --focus recent
+
+# send window to monitor and follow focus
+# shift + hyper - n : yabai -m window --display next; yabai -m display --focus next
+shift + hyper - p: yabai -m window --display previous; yabai -m display --focus previous
+
+# Increment window size
+hyper - 0x18: yabai -m window --resize right:20:0 || yabai -m window --resize left:20:0
+
+# Decrement window size
+hyper - 0x1B: yabai -m window --resize right:-20:0 || yabai -m window --resize left:-20:0
+
+# move window to display left and right
+# shift + hyper - s: yabai -m window --display west; yabai -m display --focus west;
+# shift + hyper - g: yabai -m window --display east; yabai -m display --focus east;
+
+hyper - up: yabai -m window --display north; yabai -m display --focus north;
+hyper - down: yabai -m window --display south; yabai -m display --focus south
+
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+hyper - n: yabai -m space --create \
+  && wid="$(yabai -m query --windows --window | jq -r '.id')" \
+  && sidx="$(yabai -m query --spaces --display | jq -r 'map(select(."is-native-fullscreen" == false))[-1].index')" \
+  && yabai -m window "${wid}" --space "${sidx}" \
+  && yabai -m window --focus "${wid}"
+
+# create desktop and follow focus - uses jq for parsing json (brew install jq)
+hyper - m: yabai -m space --create \
+  && sidx="$(yabai -m query --spaces --display | jq -r 'map(select(."is-native-fullscreen" == false))[-1].index')" \
+  && yabai -m space --focus "${sidx}"
+# hyper - delete: yabai -m space --destroy
