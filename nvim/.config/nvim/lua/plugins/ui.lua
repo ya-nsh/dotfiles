@@ -22,19 +22,6 @@ return {
     },
   },
 
-  -- Smooth cursor and scroll animations
-  {
-    "echasnovski/mini.animate",
-    event = "VeryLazy",
-    opts = {
-      scroll = { enable = true },
-      cursor = { enable = true },
-      resize = { enable = true },
-      open = { enable = false },
-      close = { enable = false },
-    },
-  },
-
   -- VS Code-style breadcrumb in the winbar
   {
     "Bekaboo/dropbar.nvim",
