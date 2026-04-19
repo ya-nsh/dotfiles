@@ -1,19 +1,23 @@
 ignore-empty-password
 show-failed-attempts
 daemonize
+
+image=~/Pictures/wall-lock.jpg
+scaling=fill
+
 font=JetBrainsMono Nerd Font
-font-size=18
+font-size=20
 
-color=111827ff
-
-indicator
-indicator-radius=110
-indicator-thickness=6
+indicator-radius=120
+indicator-thickness=5
 indicator-caps-lock
+indicator-idle-visible
 
-inside-color=171717cc
-line-color=00000000
+color=0a0a0aff
+
+inside-color=0a0a0acc
 ring-color=2563ebff
+line-color=00000000
 separator-color=00000000
 text-color=f5f5f5
 
@@ -21,12 +25,17 @@ key-hl-color=22c55eff
 bs-hl-color=b91c1cff
 text-caps-lock-color=f59e0b
 
-inside-ver-color=171717cc
-line-ver-color=00000000
+inside-ver-color=0a0a0acc
 ring-ver-color=2563ebff
+line-ver-color=00000000
 text-ver-color=f5f5f5
 
-inside-wrong-color=171717cc
-line-wrong-color=00000000
+inside-wrong-color=0a0a0acc
 ring-wrong-color=b91c1cff
+line-wrong-color=00000000
 text-wrong-color=f5f5f5
+
+inside-clear-color=0a0a0acc
+ring-clear-color=f59e0bff
+line-clear-color=00000000
+text-clear-color=f5f5f5
