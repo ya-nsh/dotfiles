@@ -29,6 +29,7 @@ bindsym $mod+Shift+x exec --no-startup-id $locker
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+Print exec --no-startup-id flameshot full -c
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3? This ends the X11 session.' -B 'Yes, exit' 'i3-msg exit'"
+bindsym $mod+Shift+m exec --no-startup-id xset dpms force off
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id sh -c 'wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ && killall -SIGUSR1 i3status'
 bindsym XF86AudioLowerVolume exec --no-startup-id sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && killall -SIGUSR1 i3status'
