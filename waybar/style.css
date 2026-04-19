@@ -1,12 +1,16 @@
 * {
-  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
+  font-family: "JetBrainsMono Nerd Font Mono", "JetBrainsMono Nerd Font", "Symbols Nerd Font", monospace;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   min-height: 0;
 }
 
 window#waybar {
-  background: rgba(10, 10, 10, 0.85);
+  background: linear-gradient(
+    180deg,
+    rgba(8,  8,  8,  0.92) 0%,
+    rgba(14, 14, 14, 0.86) 100%
+  );
   color: #e5e7eb;
   border-bottom: 1px solid rgba(75, 85, 99, 0.6);
   transition: background 200ms ease;
@@ -25,27 +29,50 @@ window#waybar {
 #pulseaudio,
 #tray {
   margin: 4px 3px;
-  padding: 0 10px;
+  padding: 0 12px;
   border-radius: 10px;
   background: rgba(23, 23, 23, 0.75);
+  transition: background 150ms ease, color 150ms ease;
+}
+
+/* hover glow on every pill */
+#clock:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#window:hover,
+#submap:hover {
+  background: rgba(37, 99, 235, 0.12);
+  color: #ffffff;
 }
 
 /* workspace buttons as sub-pills */
 #workspaces button {
-  padding: 0 8px;
+  padding: 0 9px;
   margin: 2px 2px;
   color: #9ca3af;
   background: transparent;
   border-radius: 8px;
   transition: all 150ms ease;
 }
-#workspaces button.active  { background: #2563eb; color: #ffffff; }
-#workspaces button.urgent  { background: #b91c1c; color: #ffffff; }
+#workspaces button.active  {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(37, 99, 235, 0.55);
+}
+#workspaces button.urgent  {
+  background: #b91c1c;
+  color: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(185, 28, 28, 0.55);
+}
 #workspaces button.visible { color: #e5e7eb; }
 #workspaces button:hover   { background: rgba(37, 99, 235, 0.25); }
 
 /* accent colours per module */
-#clock       { color: #93c5fd; }
+#clock       { color: #93c5fd; font-size: 13px; letter-spacing: 0.3px; }
 #cpu         { color: #fca5a5; }
 #memory      { color: #c4b5fd; }
 #temperature { color: #fcd34d; }
@@ -53,8 +80,22 @@ window#waybar {
 #pulseaudio  { color: #f9a8d4; }
 #battery     { color: #fdba74; }
 #battery.warning  { color: #f59e0b; }
-#battery.critical { color: #b91c1c; background: rgba(185, 28, 28, 0.18); }
+#battery.critical {
+  color: #ffffff;
+  background: rgba(185, 28, 28, 0.25);
+  animation: blink 1.5s linear infinite alternate;
+}
 
-#window  { color: #e5e7eb; font-style: italic; }
+@keyframes blink {
+  from { background: rgba(185, 28, 28, 0.25); }
+  to   { background: rgba(185, 28, 28, 0.55); }
+}
+
+#window  { color: #e5e7eb; }
 #submap  { color: #22c55e; }
-#tray    { padding: 0 6px; }
+#tray    { padding: 0 8px; }
+
+#tray menu {
+  background: rgba(17, 17, 17, 0.96);
+  color: #e5e7eb;
+}

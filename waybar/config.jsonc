@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 28,
+  "height": 34,
   "spacing": 6,
 
   // Bar-level fallback — only fires over empty bar background.
@@ -12,7 +12,7 @@
 
   "modules-left":   ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["hyprland/window"],
-  "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock"],
+  "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "clock"],
 
   "hyprland/workspaces": {
     "format": "{name}",
@@ -59,19 +59,10 @@
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
-  "battery": {
-    "format":          "{icon}  {capacity}%",
-    "format-charging": "  {capacity}%",
-    "format-plugged":  "  {capacity}%",
-    "format-icons":    ["", "", "", "", ""],
-    "states": { "warning": 30, "critical": 15 },
-    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
-    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
-  },
   "network": {
     "format-wifi":         "  {essid}",
     "format-ethernet":     "  eth",
-    "format-disconnected": "󰖪  off",
+    "format-disconnected": "  off",
     "tooltip-format":      "{ifname}: {ipaddr}",
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
