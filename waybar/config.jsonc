@@ -36,45 +36,51 @@
   },
 
   "clock": {
-    "format": "{:%a %Y-%m-%d  %H:%M}",
+    "format": "  {:%H:%M  %a %d %b}",
     "tooltip-format": "<tt>{calendar}</tt>",
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "cpu": {
-    "format": "cpu {usage}%",
+    "format": "  {usage}%",
+    "interval": 2,
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "memory": {
-    "format": "mem {percentage}%",
+    "format": "  {percentage}%",
+    "interval": 5,
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "temperature": {
-    "format": "{temperatureC}°C",
+    "format": "  {temperatureC}°C",
     "critical-threshold": 85,
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "battery": {
-    "format": "bat {capacity}%",
+    "format":          "{icon}  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged":  "  {capacity}%",
+    "format-icons":    ["", "", "", "", ""],
     "states": { "warning": 30, "critical": 15 },
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "network": {
-    "format-wifi": "  {essid}",
-    "format-ethernet": "eth",
-    "format-disconnected": "off",
+    "format-wifi":         "  {essid}",
+    "format-ethernet":     "  eth",
+    "format-disconnected": "󰖪  off",
+    "tooltip-format":      "{ifname}: {ipaddr}",
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-muted": "muted",
-    "format-icons": { "default": ["lo", "mid", "hi"] },
-    "on-click": "pavucontrol"
+    "format":        "{icon}  {volume}%",
+    "format-muted":  "  muted",
+    "format-icons":  { "headphone": "", "default": ["", "", ""] },
+    "on-click":      "pavucontrol"
   },
   "tray": {
     "spacing": 6
