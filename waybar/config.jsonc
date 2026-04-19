@@ -13,6 +13,7 @@
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "smooth-scrolling-threshold": 1,
     "sort-by-number": true
   },
   "hyprland/window": { "max-length": 80 },
