@@ -1,0 +1,36 @@
+[global]
+    monitor = 0
+    follow = mouse
+    width = (300, 500)
+    height = 200
+    origin = top-right
+    offset = 16x48
+    notification_limit = 5
+    progress_bar = true
+    transparency = 10
+    corner_radius = 8
+    frame_width = 1
+    frame_color = "#2563eb"
+    font = JetBrains Mono 10
+    format = "<b>%s</b>\n%b"
+    icon_position = left
+    enable_recursive_icon_lookup = true
+    mouse_left_click   = do_action, close_current
+    mouse_middle_click = close_all
+    mouse_right_click  = close_current
+
+[urgency_low]
+    background = "#171717"
+    foreground = "#d1d5db"
+    timeout    = 4
+
+[urgency_normal]
+    background = "#1f2937"
+    foreground = "#f5f5f5"
+    timeout    = 8
+
+[urgency_critical]
+    background  = "#b91c1c"
+    foreground  = "#ffffff"
+    frame_color = "#b91c1c"
+    timeout     = 0

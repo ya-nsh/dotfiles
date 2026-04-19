@@ -1,0 +1,70 @@
+[theme]
+theme = "plain"
+[theme.overrides]
+idle_bg = "#000000"
+idle_fg = "#f5f5f5"
+info_bg = "#000000"
+info_fg = "#f5f5f5"
+good_bg = "#22c55e"
+good_fg = "#171717"
+warning_bg = "#f59e0b"
+warning_fg = "#171717"
+critical_bg = "#b91c1c"
+critical_fg = "#ffffff"
+separator = "  "
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "net"
+device = "wlp7s0"
+format = " $icon $ssid $signal_strength "
+missing_format = ""
+
+[[block]]
+block = "net"
+device = "enp8s0"
+format = " $icon $speed_down.eng(prefix:K) $speed_up.eng(prefix:K) "
+missing_format = ""
+
+[[block]]
+block = "sound"
+format = " $icon $volume "
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "cpu"
+format = " $icon $utilization "
+interval = 5
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents "
+
+[[block]]
+block = "disk_space"
+path = "/"
+format = " $icon $available "
+
+[[block]]
+block = "custom"
+command = "echo '  '"
+format = " $text "
+interval = 86400
+[[block.click]]
+button = "left"
+cmd = "/home/deva/.config/i3/scripts/i3-help.sh"
+
+[[block]]
+block = "time"
+interval = 60
+format = " $icon $timestamp.datetime(f:'%a %Y-%m-%d %H:%M') "
+[[block.click]]
+button = "left"
+cmd = "ptyxis --new-window -x /home/deva/.config/i3/scripts/show-cal.sh"
+[[block.click]]
+button = "right"
+cmd = "notify-send -u low \"$(date '+%A, %B %d %Y')\" \"$(cal -3)\""

@@ -1,0 +1,15 @@
+! Font rendering
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.rgba:       rgb
+Xft.lcdfilter:  lcddefault
+
+! dmenu defaults (consumed by xresources patch if dmenu is rebuilt;
+! vanilla dmenu ignores these but they keep theming consistent for other apps)
+dmenu.font:          JetBrains Mono:size=11
+dmenu.background:    #171717
+dmenu.foreground:    #d1d5db
+dmenu.selbackground: #2563eb
+dmenu.selforeground: #ffffff
