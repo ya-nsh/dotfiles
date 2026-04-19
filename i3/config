@@ -29,6 +29,7 @@ bindsym $mod+Shift+x exec --no-startup-id $locker
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+Print exec --no-startup-id flameshot full -c
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3? This ends the X11 session.' -B 'Yes, exit' 'i3-msg exit'"
+bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'Shut down?' -B 'Yes, shut down' 'systemctl poweroff'"
 bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/scripts/display-off.sh
 bindsym $mod+c exec --no-startup-id copyq show
 
