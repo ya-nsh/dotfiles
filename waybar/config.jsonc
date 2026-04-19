@@ -4,6 +4,9 @@
   "height": 28,
   "spacing": 6,
 
+  // Bar-level fallback — only fires over empty bar background.
+  // Every module below gets the same pair via $scroll-up / $scroll-down
+  // because GTK modules swallow scroll events instead of bubbling.
   "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
   "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1",
 
@@ -21,23 +24,59 @@
     "all-outputs": true,
     "sort-by-number": true
   },
-  "hyprland/window": { "max-length": 80 },
-  "hyprland/submap": { "format": "[{}]" },
+  "hyprland/window": {
+    "max-length": 80,
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
+  },
+  "hyprland/submap": {
+    "format": "[{}]",
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
+  },
 
   "clock": {
     "format": "{:%a %Y-%m-%d  %H:%M}",
-    "tooltip-format": "<tt>{calendar}</tt>"
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
-  "cpu":         { "format": "cpu {usage}%" },
-  "memory":      { "format": "mem {percentage}%" },
-  "temperature": { "format": "{temperatureC}°C", "critical-threshold": 85 },
-  "battery":     { "format": "bat {capacity}%", "states": { "warning": 30, "critical": 15 } },
-  "network":     { "format-wifi": "  {essid}", "format-ethernet": "eth", "format-disconnected": "off" },
+  "cpu": {
+    "format": "cpu {usage}%",
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
+  },
+  "memory": {
+    "format": "mem {percentage}%",
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
+  },
+  "temperature": {
+    "format": "{temperatureC}°C",
+    "critical-threshold": 85,
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
+  },
+  "battery": {
+    "format": "bat {capacity}%",
+    "states": { "warning": 30, "critical": 15 },
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
+  },
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "eth",
+    "format-disconnected": "off",
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
+  },
   "pulseaudio": {
     "format": "{volume}% {icon}",
     "format-muted": "muted",
     "format-icons": { "default": ["lo", "mid", "hi"] },
     "on-click": "pavucontrol"
   },
-  "tray": { "spacing": 6 }
+  "tray": {
+    "spacing": 6
+  }
 }
