@@ -35,6 +35,14 @@ if command -v copyq >/dev/null 2>&1; then
     run_once copyq copyq
 fi
 
+if command -v gammastep >/dev/null 2>&1; then
+    run_once gammastep gammastep -O 4500
+fi
+
+if [ -x "$HOME/.local/bin/greenclip" ]; then
+    run_once greenclip "$HOME/.local/bin/greenclip" daemon
+fi
+
 for agent in \
     /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 \
     /usr/libexec/polkit-gnome-authentication-agent-1
