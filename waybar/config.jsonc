@@ -1,0 +1,35 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+  "spacing": 6,
+
+  "modules-left":   ["hyprland/workspaces", "hyprland/submap"],
+  "modules-center": ["hyprland/window"],
+  "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock"],
+
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "sort-by-number": true
+  },
+  "hyprland/window": { "max-length": 80 },
+  "hyprland/submap": { "format": "[{}]" },
+
+  "clock": {
+    "format": "{:%a %Y-%m-%d  %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>"
+  },
+  "cpu":         { "format": "cpu {usage}%" },
+  "memory":      { "format": "mem {percentage}%" },
+  "temperature": { "format": "{temperatureC}°C", "critical-threshold": 85 },
+  "battery":     { "format": "bat {capacity}%", "states": { "warning": 30, "critical": 15 } },
+  "network":     { "format-wifi": "  {essid}", "format-ethernet": "eth", "format-disconnected": "off" },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "muted",
+    "format-icons": { "default": ["lo", "mid", "hi"] },
+    "on-click": "pavucontrol"
+  },
+  "tray": { "spacing": 6 }
+}
