@@ -4,6 +4,9 @@
   "height": 28,
   "spacing": 6,
 
+  "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+  "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1",
+
   "modules-left":   ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["hyprland/window"],
   "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock"],
@@ -11,9 +14,11 @@
   "hyprland/workspaces": {
     "format": "{name}",
     "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1",
-    "smooth-scrolling-threshold": 1,
+    "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
+    "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1",
+    "warp-on-scroll": false,
+    "disable-scroll": false,
+    "all-outputs": true,
     "sort-by-number": true
   },
   "hyprland/window": { "max-length": 80 },
