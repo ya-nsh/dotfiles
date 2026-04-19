@@ -15,6 +15,10 @@ run_once() {
     "$@" >/dev/null 2>&1 &
 }
 
+if command -v picom >/dev/null 2>&1; then
+    run_once picom picom --config ~/.config/picom/picom.conf
+fi
+
 if command -v dunst >/dev/null 2>&1; then
     run_once dunst dunst
 fi
@@ -27,6 +31,10 @@ if command -v blueman-applet >/dev/null 2>&1; then
     run_once blueman-applet blueman-applet
 fi
 
+if command -v copyq >/dev/null 2>&1; then
+    run_once copyq copyq
+fi
+
 for agent in \
     /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 \
     /usr/libexec/polkit-gnome-authentication-agent-1
@@ -36,3 +44,9 @@ do
         break
     fi
 done
+
+if command -v xsettingsd >/dev/null 2>&1; then
+    if ! pgrep -u "$user_id" -x gnome-settings-daemon >/dev/null 2>&1; then
+        run_once xsettingsd xsettingsd
+    fi
+fi
