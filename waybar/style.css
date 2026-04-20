@@ -27,7 +27,8 @@ window#waybar {
 #battery,
 #network,
 #pulseaudio,
-#tray {
+#tray,
+#custom-help {
   margin: 4px 3px;
   padding: 0 12px;
   border-radius: 10px;
@@ -44,7 +45,8 @@ window#waybar {
 #network:hover,
 #pulseaudio:hover,
 #window:hover,
-#submap:hover {
+#submap:hover,
+#custom-help:hover {
   background: rgba(37, 99, 235, 0.12);
   color: #ffffff;
 }
@@ -91,9 +93,10 @@ window#waybar {
   to   { background: rgba(185, 28, 28, 0.55); }
 }
 
-#window  { color: #e5e7eb; }
-#submap  { color: #22c55e; }
-#tray    { padding: 0 8px; }
+#window       { color: #e5e7eb; }
+#submap       { color: #22c55e; }
+#tray         { padding: 0 8px; }
+#custom-help  { color: #89b4fa; font-size: 14px; }
 
 #tray menu {
   background: rgba(17, 17, 17, 0.96);
