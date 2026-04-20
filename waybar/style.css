@@ -28,15 +28,21 @@ window#waybar {
 #network,
 #pulseaudio,
 #tray,
+#mpris,
+#idle_inhibitor,
+#custom-notif,
+#custom-power,
 #custom-help {
   margin: 4px 3px;
   padding: 0 12px;
   border-radius: 10px;
   background: rgba(23, 23, 23, 0.75);
-  transition: background 150ms ease, color 150ms ease;
+  border: 1px solid rgba(75, 85, 99, 0.25);
+  transition: background 180ms ease, color 180ms ease,
+              border-color 180ms ease, box-shadow 180ms ease;
 }
 
-/* hover glow on every pill */
+/* hover glow + lift on every pill */
 #clock:hover,
 #cpu:hover,
 #memory:hover,
@@ -44,10 +50,16 @@ window#waybar {
 #battery:hover,
 #network:hover,
 #pulseaudio:hover,
+#mpris:hover,
+#idle_inhibitor:hover,
+#custom-notif:hover,
+#custom-power:hover,
 #window:hover,
 #submap:hover,
 #custom-help:hover {
-  background: rgba(37, 99, 235, 0.12);
+  background: rgba(37, 99, 235, 0.18);
+  border-color: rgba(37, 99, 235, 0.55);
+  box-shadow: 0 0 12px 0 rgba(37, 99, 235, 0.25);
   color: #ffffff;
 }
 
@@ -97,6 +109,26 @@ window#waybar {
 #submap       { color: #22c55e; }
 #tray         { padding: 0 8px; }
 #custom-help  { color: #89b4fa; font-size: 14px; }
+#mpris        { color: #fbcfe8; }
+#idle_inhibitor { color: #67e8f9; font-size: 13px; }
+#idle_inhibitor.activated {
+  color: #fde047;
+  background: rgba(253, 224, 71, 0.14);
+  border-color: rgba(253, 224, 71, 0.5);
+}
+#custom-notif         { color: #fde68a; font-size: 13px; }
+#custom-notif.silenced { color: #6b7280; }
+#custom-power {
+  color: #fca5a5;
+  font-size: 14px;
+  padding: 0 14px;
+}
+#custom-power:hover {
+  background: rgba(185, 28, 28, 0.22);
+  border-color: rgba(185, 28, 28, 0.6);
+  box-shadow: 0 0 12px 0 rgba(185, 28, 28, 0.35);
+  color: #ffffff;
+}
 
 #tray menu {
   background: rgba(17, 17, 17, 0.96);

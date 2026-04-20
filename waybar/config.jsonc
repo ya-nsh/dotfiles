@@ -12,7 +12,7 @@
 
   "modules-left":   ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["hyprland/window"],
-  "modules-right":  ["custom/help", "tray", "pulseaudio", "network", "cpu", "memory", "temperature", "clock"],
+  "modules-right":  ["custom/help", "tray", "mpris", "pulseaudio", "network", "cpu", "memory", "temperature", "idle_inhibitor", "custom/notif", "clock", "custom/power"],
 
   "hyprland/workspaces": {
     "format": "{name}",
@@ -36,24 +36,28 @@
   },
 
   "clock": {
+    "on-click": "sh -c 'command -v gnome-calendar >/dev/null && gnome-calendar'",
     "format": "  {:%H:%M  %a %d %b}",
     "tooltip-format": "<tt>{calendar}</tt>",
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "cpu": {
+    "on-click": "ptyxis --new-window -- htop",
     "format": "  {usage}%",
     "interval": 2,
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "memory": {
+    "on-click": "ptyxis --new-window -- htop",
     "format": "  {percentage}%",
     "interval": 5,
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "temperature": {
+    "on-click": "ptyxis --new-window -- nvtop",
     // Read the real AMD Tctl sensor (hwmon.k10temp). The motherboard
     // acpitz zone on this board is pinned near ambient and doesn't
     // track load, so temps looked hardcoded at ~17°C. The pci device
@@ -69,6 +73,7 @@
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "network": {
+    "on-click": "~/.local/bin/networkmanager_dmenu",
     "format-wifi":         "  {essid}",
     "format-ethernet":     "  eth",
     "format-disconnected": "  off",
@@ -80,7 +85,10 @@
     "format":        "{icon}  {volume}%",
     "format-muted":  "  muted",
     "format-icons":  { "headphone": "", "default": ["", "", ""] },
-    "on-click":      "pavucontrol"
+    "on-click":          "pavucontrol",
+    "on-click-right":    "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up":      "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+",
+    "on-scroll-down":    "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
   },
   "tray": {
     "spacing": 6
@@ -89,5 +97,37 @@
     "format": "",
     "tooltip-format": "Keybinds ($mod+F1)",
     "on-click": "~/.config/hypr/scripts/hyprland-keybinds.sh"
+  },
+  "mpris": {
+    "format":        "  {status_icon}  {artist} — {title}",
+    "format-paused": "  {status_icon}  {artist} — {title}",
+    "status-icons":  { "playing": "", "paused": "", "stopped": "⏹" },
+    "dynamic-order": ["title", "artist"],
+    "max-length":    50,
+    "interval":      1,
+    "on-click":      "playerctl play-pause",
+    "on-click-right":"playerctl next",
+    "on-scroll-up":  "playerctl previous",
+    "on-scroll-down":"playerctl next",
+    "tooltip-format":"{player}: {artist} — {title} ({status})"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": { "activated": "", "deactivated": "" },
+    "tooltip-format-activated":   "Idle inhibited — system won't sleep",
+    "tooltip-format-deactivated": "Normal sleep behavior"
+  },
+  "custom/notif": {
+    "exec": "~/.config/hypr/scripts/waybar-notif.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click":       "makoctl dismiss --all",
+    "on-click-right": "~/.config/hypr/scripts/waybar-notif.sh --toggle-dnd",
+    "tooltip": true
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip-format": "Power menu",
+    "on-click": "~/.config/i3/scripts/powermenu.sh"
   }
 }
