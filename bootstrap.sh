@@ -90,7 +90,23 @@ else
 fi
 
 ############################################
-# 3. Stow symlinks
+# 3. WhiteSur cursor theme (not in apt/pacman)
+############################################
+if [[ -d "$HOME/.local/share/icons/WhiteSur-cursors" ]]; then
+    log "WhiteSur cursors already installed"
+elif [[ "$SKIP_FONTS" == "1" ]]; then
+    log "SKIP_FONTS=1 — also skipping cursor install"
+else
+    log "Installing WhiteSur cursor theme…"
+    TMP_CUR="$(mktemp -d)"
+    git clone --depth 1 https://github.com/vinceliuice/WhiteSur-cursors.git "$TMP_CUR/ws" \
+        && (cd "$TMP_CUR/ws" && ./install.sh >/dev/null) \
+        || warn "WhiteSur install failed — falling back to Bibata"
+    rm -rf "$TMP_CUR"
+fi
+
+############################################
+# 4. Stow symlinks
 ############################################
 mkdir -p "$HOME/.config" "$HOME/.local/bin"
 
@@ -130,7 +146,7 @@ find hypr/scripts -type f -name '*.sh' -exec chmod +x {} + 2>/dev/null || true
 find i3/scripts   -type f -name '*.sh' -exec chmod +x {} + 2>/dev/null || true
 
 ############################################
-# 4. User services
+# 5. User services
 ############################################
 if command -v systemctl >/dev/null; then
     log "Enabling PipeWire user services…"
@@ -141,7 +157,7 @@ if command -v systemctl >/dev/null; then
 fi
 
 ############################################
-# 5. Post-install hints
+# 6. Post-install hints
 ############################################
 cat <<EOF
 
