@@ -54,8 +54,17 @@
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
   "temperature": {
-    "format": "  {temperatureC}°C",
+    // Read the real AMD Tctl sensor (hwmon.k10temp). The motherboard
+    // acpitz zone on this board is pinned near ambient and doesn't
+    // track load, so temps looked hardcoded at ~17°C. The pci device
+    // path is stable across reboots; the hwmonN index is not.
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+    "input-filename": "temp1_input",
+    "format":          "  {temperatureC}°C",
+    "format-critical": "  {temperatureC}°C",
     "critical-threshold": 85,
+    "interval": 2,
+    "tooltip-format": "CPU (k10temp Tctl): {temperatureC}°C",
     "on-scroll-up":   "~/dotfiles/hypr/scripts/scroll-ws.sh e-1",
     "on-scroll-down": "~/dotfiles/hypr/scripts/scroll-ws.sh e+1"
   },
